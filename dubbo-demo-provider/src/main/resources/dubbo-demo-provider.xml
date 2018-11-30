@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<!-- 1、提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="demo-provider" />
+	<!-- 2、使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry address="zookeeper://127.0.0.1:2181" />
+	<!-- 3、使用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="20880" />
+	<!-- 4、注入具体的实现bean -->
+	<!-- <bean id="demoService" class="org.apache.dubbo.demo.provider.DemoServiceImpl" /> -->
+	<!-- 5、声明需要暴露的服务接口 -->
+	<!-- <dubbo:service interface="org.apache.dubbo.demo.DemoService" ref="demoService" /> -->
+	
+	<!-- 开启注解 -->
+	<dubbo:annotation package="org.apache.dubbo.demo"/>
+     
+</beans>
